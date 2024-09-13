@@ -42,7 +42,7 @@
 
 <body>
     <div class="profile-container">
-        <img src="https://i.pinimg.com/736x/1f/b4/0c/1fb40cbdabd03a89c9ee410d2c6d494d.jpg" alt="Spidermine">
+        <img src="https://tse3.mm.bing.net/th?id=OIP.7v1NRcDNndfz2GtLSef8cgHaHa&pid=Api&P=0&h=220" alt="Minions">
         <div class="info">
             <strong>Nama:</strong> <?= $nama ?>
         </div>
