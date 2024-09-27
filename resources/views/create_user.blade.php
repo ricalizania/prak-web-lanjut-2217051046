@@ -55,26 +55,39 @@
 </head>
 <body>
 
-    <form action="/user/store" method="POST">
+    <form action="/user/store" method="POST" novalidate>
         <h2>Create User</h2>
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="form-group">
             <label for="nama">Nama :</label>
             <input type="text" id="nama" name="nama" placeholder="Masukkan Nama Anda" required>
+            @foreach($errors->get('nama') as $msg)
+            <p class="text-danger">{{ $msg }}</p>
+
+            @endforeach
         </div>
 
         <div class="form-group">
-            <label for="kelas">Kelas :</label>
-            <select name="kelas" id="kelas" required>
+            <label for="kelas_id">Kelas :</label>
+            <select name="kelas_id" id="kelas_id" required>
                 @foreach ($kelas as $kelasItem)
-                <option value="{{$kelasItem->id}}">{{$kelasItem->nama_kelas}}</option>
+                    <option value="{{ $kelasItem->id }}">{{ $kelasItem->nama_kelas }}</option>
                 @endforeach
-    </select>
+            </select>
+            @foreach($errors->get('kelas_id') as $msg)
+            <p class="text-danger">{{ $msg }}</p>
+
+            @endforeach
         </div>
+
 
         <div class="form-group">
             <label for="npm">NPM :</label>
             <input type="text" id="npm" name="npm" placeholder="Masukkan NPM Anda" required>
+            @foreach($errors->get('npm') as $msg)
+            <p class="text-danger">{{ $msg }}</p>
+
+            @endforeach
         </div>
 
         <input type="submit" value="Submit">

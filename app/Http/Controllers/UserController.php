@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Kelas;
+use App\Models\Kelas;   
 use App\Models\UserModel;
+// use App\Http\Requests\UserRequest;
+
 
 class UserController extends Controller
 {
@@ -18,23 +20,27 @@ class UserController extends Controller
     }
 
     public function create() {
-       
-        return view ('create_user',
-        ['kelas' => Kelas::all()
-    ]);
+        // $data = [
+        //     'nama' => $nama,
+        //     'kelas' => $kelas,
+        //     'npm' => $npm,
+        // ];;
+        return view ('create_user', 
+                    ['kelas' => Kelas::all()
+            ]);
     }
 
-    public function store() {
-
-        $validatedData = $request->validate([
+    public function store(Request $request) {
+        
+        $validatedData = $request->validate ([
             'nama' => 'required|string|max:255',
             'npm' => 'required|string|max:255',
-            'kelas' => 'required|exists:kelas,id',
+            'kelas_id' => 'required|exists:kelas,id',
         ]);
 
-        $user = UserModel::create($validatedData);
+        $user = UserModel::create ($validatedData) ;
 
-        $user->load('kelas');
+        $user -> load('kelas');
 
         return view('profile', [
             'nama' => $user->nama,
