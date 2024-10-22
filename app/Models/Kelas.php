@@ -10,11 +10,10 @@ class Kelas extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+    protected $table ='kelas';
 
-    public function user()
+    public function getKelas()
     {
-        return view('create_user', [
-            'kelas' => Kelas::all(),
-        ]);
+        return $this->all();
     }
 }

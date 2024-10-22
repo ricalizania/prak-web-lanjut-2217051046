@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -21,7 +21,6 @@
             border-radius: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 300px;
-            
         }
         .form-group {
             margin-bottom: 15px;
@@ -51,42 +50,44 @@
         h2 {
             text-align: center; /* Center align the title */
         }
+        .submit-container {
+            text-align: right; /* Menyelaraskan isi container ke kanan */
+        }
+
+
+        /* CSS untuk tabel */
+        table {
+            width: 80%;
+            border-collapse: collapse; /* Menggabungkan border tabel dan cell */
+            margin: 20px auto; /* Pusatkan tabel */
+            background-color: #D9DDDC; /* Warna latar belakang tabel */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Bayangan di sekitar tabel */
+        }
+
+        th, td {
+            padding: 10px; /* Ruang di dalam sel */
+            text-align: left; /* Perataan teks di kiri */
+            border-bottom: 1px solid #222021; /* Garis bawah setiap baris */
+        }
+
+        th {
+            background-color: #363636; /* Warna latar belakang header */
+            color: white; /* Warna teks header */
+        }
+
+        tr:hover {
+            background-color: #777B7E; /* Efek hover untuk baris tabel */
+        }
+
+        td {
+            color: #333; /* Warna teks */
+        }
+
     </style>
 </head>
-<body> -->
+<body>
+    @yield('content')
 
-@extends('layouts.app')
-
-@section('content')
-<div>
-<h2 style="text-align: center; position: absolute; top: 0px; right: 630px;">Input Data</h2>
-    <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        <label for="nama">Nama:</label>
-        <input type="text" id="nama" name="nama"><br>
- 
-        <label for="npm">NPM : </label>
-        <input type="text" id="npm" name="npm"><br>
-        
-        <label for="kelas">Kelas :</label>
-        <select name="kelas_id" id="kelas_id">
-            @foreach ($kelas as $kelasItem)
-            <option value="{{ $kelasItem->id }}">{{ $kelasItem->nama_kelas }}</option>
-            @endforeach
-        </select>
-
-        <label for="foto">foto:</label>
-        <input type="file" id="foto" name="foto"><br>
-        <div class="form-group submit-container">
-        </div>
-
-        <label for="jurusan">Jurusan : </label>
-        <input type="text" id="jurusan" name="jurusan"><br>
-
-        <label for="semester">Semester : </label>
-        <input type="text" id="semester" name="semester"><br><br>
-
-        <button type="submit">Submit</button>
-    </form>
-</div>
-@endsection
+    <script src="..."></script>
+</body>
+</html>

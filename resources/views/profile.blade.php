@@ -7,7 +7,8 @@
     <title>WLTugas2</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: Monrovia, monrovia;
+            font-weight: bold;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -18,17 +19,18 @@
 
         .profile-container {
             text-align: center;
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
+            background-color: #777B7E;
+            padding: 100px;
+            border-radius: 50px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
         }
 
         .profile-container img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            margin-bottom: 20px;
+            width: 150px;
+            height: 150px;
+            border-radius: 100%;
+            margin-bottom: 50px;
         }
 
         .profile-container .info {
@@ -37,20 +39,41 @@
             padding: 10px;
             border-radius: 5px;
         }
+
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .info-item {
+            background-color: #d9dddc;
+            color: #222021;
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+        }
     </style>
 </head>
 
 <body>
 <div class="profile-container">
-    <img src="https://tse3.mm.bing.net/th?id=OIP.7v1NRcDNndfz2GtLSef8cgHaHa&pid=Api&P=0&h=220" alt="Minions">
-    <div class="info">
-        <strong>Nama:</strong> {{ $nama }}
-    </div>
-    <div class="info">
-        <strong>Kelas:</strong> {{ $nama_kelas ?? 'Kelas tidak ditemukan' }}
-    </div>
-    <div class="info">
-        <strong>NPM:</strong> {{ $npm }}
+        <div class="profile-picture">
+            <!-- Check if user and foto exist, otherwise use a default image -->
+            <img src="{{ asset('img/' . ($user->foto ?? 'default.jpg')) }}" alt="Profile Picture" />
+        </div>
+
+    <div class="profile-info">
+        <!-- Safely display user's name, npm, and class -->
+        <div class="info-item">Nama : {{ $user->nama ?? 'Nama tidak ditemukan' }}</div>
+        <div class="info-item">NPM : {{ $user->npm ?? 'NPM tidak ditemukan' }}</div>
+        <div class="info-item">Kelas : {{ $user->nama_kelas ?? 'Kelas tidak ditemukan' }}</div>
+        <div class="info-item">Jurusan : {{ $user->jurusan ?? 'Jurusan tidak ditemukan' }}</div>
+        <div class="info-item">Semester : {{ $user->semester ?? 'Semester tidak ditemukan' }}</div>
     </div>
 </div>
 
